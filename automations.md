@@ -10,7 +10,6 @@ AutoSpam Instance which accessible from bot struct.
 * `randomizer` : A boolean indicating whether bot should put random letter at the beginning and/or the end of the string.
 * `use_color` : A boolean indicating whether bot should use random color for the message.
 * `show_emote` : A boolean indicating whether the bot should send player emotions during auto-spam.
-  
 * `messages` : A properties to edit text messages from the list.
 
 #### Methods
