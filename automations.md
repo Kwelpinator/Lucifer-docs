@@ -1,4 +1,4 @@
-# LUCIFER V1.8 - API DOCUMENTATION [AUTOMATION]
+# LUCIFER V2.54.2 - API DOCUMENTATION [AUTOMATION]
 
 ## AutoSpam
 AutoSpam Instance which accessible from bot struct.
@@ -6,20 +6,49 @@ AutoSpam Instance which accessible from bot struct.
 #### Properties
 * `enabled` : A boolean indicating whether the auto-spam feature is on or off.
 * `interval` : The time interval between spam messages.
-* `random_interval` : A boolean indicating whether bot should send messages with random interval when auto-spam is active.
+* `auto_interval` : A boolean indicating whether bot should send messages with random interval when auto-spam is active.
+* `randomizer` : A boolean indicating whether bot should put random letter at the beginning and/or the end of the string.
+* `use_color` : A boolean indicating whether bot should use random color for the message.
 * `show_emote` : A boolean indicating whether the bot should send player emotions during auto-spam.
+  
+* `messages` : A properties to edit text messages from the list.
 
 #### Methods
-* `setText(index: number, message: string)` : A function that sets the spam text by using index. Index Range: [0-3]
+* `size()` : A function to get the amount of text in the message list.
+* `insert()` : A function to add new empty column to the auto spam messages.
+* `set(index: number, message: string)` : A function that sets the spam text by using index. Index Range: [1-nessage.size()-1]
+* `add(message: string)` : A function to add new message to the message list.
+* `find(message: string)` : A function to search for the matching message in the message list. (return number)
+* `index_of(string: message)` : Same as `find()`
+* `erase(index: number)` : A function to delete the matching message in the message list.
+* `get(index: number)` : A function to get the message in the message list. (return string)
+* `at(index: number)` : Same as `get()`
+* `empty()` : A function to check wether the message list is empty. (return boolean)
+* `clear()` : A function to clear all the spam text in the message list.
 
 #### Example
 ```lua
 spam = getBot().auto_spam -- Accessing AutoSpam from bot class.
+message = spam.messages --Accessing messageEditor
 spam.enabled = true -- Toggling auto-spam.
 spam.interval = 5 -- Changing Interval.
-spam.random_interval = true -- Enabling random interval feature.
+spam.auto_interval = true --Enabling random interval feature.
+spam.randomizer = true --Enabling randomizer feature.
+spam.use_color = true --Enabling adjust color feature.
 spam.show_emote = true -- Enabling emote show feature
-spam:setText(0, "This is a text message") -- 0: First Message Input.
+
+print(message:size()) --Return the amount of spam text in the message list.
+print(message:find("Omg, docs is updated!") --Return an index if the text was found. [return: 1]
+print(message:index_of("Omg, docs is updated!") --Return an index if the text was found. [return: 1]
+print(message:get(1) --Return a string at the provided index from message list. [return: "Omg, docs is updated!"]
+print(message:at(1) --Return a string at the provided index from message list. [return: "Omg, docs is updated!"]
+print(message:clear()) --Return a boolean wether the message list are empty.
+
+message:insert() --Add new empty spam text.
+message:set(1, "Omg, docs is updated!") --Set the spam text by index into the given string.
+message:add("Kwelp was here. =w=") --Add a new spam text at the end of the message list.
+message:erase(2) --Delete the spam text from the message list entirely.
+message:clear() --Delete all the spam text from the message list entirely.
 ```
 
 ## AutoGeiger
