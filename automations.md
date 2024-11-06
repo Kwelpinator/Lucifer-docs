@@ -55,13 +55,26 @@ AutoGeiger Instance which accessible from bot struct.
 
 #### Properties
 * `enabled` : A boolean indicating whether the auto-geiger feature is on or off.
-* `afk` : A boolean indicating whether if bot is forced to stand in main door.
+* `insta_path` : A boolean indicating whether the bot will instantly find path to the target area.
+* `use_chocolate` : A boolean whether the bot will use hot chocolate during auto-geiger.
+
+#### Methods
+* `addWorld(string: world_name)` : A function that add a world from the geiger world list.
+* `removeWorld(string: world_name)` : A function that remove a world from the geiger world list.
+* `addStorage(string: world_name)` : A function that add a storage from the geiger storage list.
+* `removeStorage(string: world_name)` : A function that remove a storage from the geiger world list.
+* `spread()` : A function that assign the bot between worlds different worlds.
 
 #### Example
 ```lua
 geiger = getBot().auto_geiger -- Accessing AutoGeiger from bot class.
 geiger.enabled = true -- Toggling auto-geiger.
-geiger.afk = true -- Enabling afk on main door feature.
+
+geiger.addWorld("GEIGERWORLD") --Add a world in the world list.
+geiger.removeWorld("GEIGERWORLD") --Remove added world from the world list.
+geiger.addStorage("GEIGERSTORAGE") --Add a world in the storage list.
+geiger.removeStorage("GEIGERSTORAGE") --Remove added world from the storage list.
+geiger:spread()
 ```
 
 ## AutoMessage
